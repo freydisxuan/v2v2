@@ -20,7 +20,12 @@ export class Database {
   pool = null;
 
   open() {
-    this.pool = new pg.Pool({ connectionString: this.connectionString });
+    this.pool = new pg.Pool({ 
+      connectionString: this.connectionString,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    });
 
     this.pool.on('error', (err) => {
       this.logger.error('error in database pool', err);

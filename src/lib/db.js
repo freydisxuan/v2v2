@@ -9,7 +9,12 @@ if (!connectionString) {
   console.info(connectionString);
 }
 
-const pool = new pg.Pool({ connectionString });
+const pool = new pg.Pool({ 
+  connectionString,
+  ssl: {
+    rejectUnauthorized: false
+  }
+ });
 
 pool.on('error', (err) => {
   console.error('postgres error, exiting...', err);
