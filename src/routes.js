@@ -2,6 +2,7 @@ import express from 'express';
 import { getDatabase } from './lib/db.client.js';
 import { environment } from './lib/environment.js';
 import { logger } from './lib/logger.js';
+import { getMappedQAInCategory } from './lib/db.js';
 
 export const router = express.Router();
 
@@ -10,14 +11,18 @@ router.get('/', async (req, res) => {
 
   const categories = result?.rows ?? [];
 
-  console.log(categories);
   res.render('index', { title: 'Forsíða', categories });
 });
 
-router.get('/spurningar/:category', (req, res) => {
+router.get('/spurningar/:category', async (req, res) => {
   // TEMP EKKI READY FYRIR PRODUCTION
-  const title = req.params.category;
-  res.render('category', { title });
+  const id = req.params.category;
+  const titleResult = await getDatabase()?.query('SELECT name FROM categories where id = $1', [id]);
+  const title = titleResult?.rows[0].name ?? 'Category not found';
+
+  const data = await getMappedQAInCategory(id)
+  console.log(data);
+  res.render('category', { title, questions: data });
 });
 
 router.get('/form', (req, res) => {

@@ -31,7 +31,27 @@ export async function categoriesFromDatabase() {
   return null;
 }
 
-export async function query(q) {
+export async function getMappedQAInCategory(id) {
+  const questionsMapped = [];
+  const questionsResults = await query('SELECT id, question_text FROM question WHERE category_id = $1', [id]);
+  for (let i = 0; i < questionsResults?.rows.length; i++) {
+    const question = questionsResults?.rows[i]
+    const answersResult = await query('SELECT id, answer_text, right_answer FROM answer WHERE question_id = $1', [question.id])
+    questionsMapped.push({
+      'title': [question.question_text],
+      'answers': answersResult.rows.map((e) => (
+        {
+          'id': e.id,
+          'answer': e.answer_text,
+          'correct': e.right_answer
+        }
+      ))
+    })
+  }
+  return questionsMapped;
+}
+
+export async function query(q, params) {
   let client;
 
   try {
@@ -43,15 +63,14 @@ export async function query(q) {
 
   let result;
   try {
-    result = await client.query(q);
-    console.log(result);
+    result = await client.query(q, params);
   } catch (e) {
     console.error('Error selecting', e);
   } finally {
     client.release();
   }
 
-  await pool.end();
+//  await pool.end();
 
   return result;
 }
