@@ -1,5 +1,5 @@
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Arial, sans-serif, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
@@ -57,7 +57,7 @@ input[type="radio"] {
 }
 
  ul {
-    padding: 0px;
+    padding: 1px;
   }
 
 
