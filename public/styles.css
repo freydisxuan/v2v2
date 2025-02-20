@@ -10,7 +10,6 @@ body {
 
 .container {
     max-width: 600px;
-    width: 90%;
     background: white;
     padding: 20px;
     margin: 20px;
@@ -26,11 +25,14 @@ h2 {
 h1{
     text-align: center;
 }
-/* h2 {
-    color: #222;
-    margin-bottom: 20px;
-    text-align: center;
-  } */
+
+.header {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    gap: 10px; /* Space between back button and title */
+    justify-content: center;
+  }
+
 
 pre {
     font-family: inherit;
@@ -53,8 +55,13 @@ label {
 input[type="radio"] {
     margin-right: 8px;
 }
-ul {
+
+ ul {
     padding: 0px;
+  }
+
+
+.header ul {
     text-align: center;
   }
 
@@ -81,19 +88,40 @@ ul {
     background-color: #333;
     transform: scale(1.05); 
   }
-/* button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+
+  .setcont {
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px #121212;
 }
 
-button:hover {
-    background-color: #0056b3;
-} */
+.setcont form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.setcont label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+ .setcont select, .setcont textarea, .setcont input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.setcont textarea {
+    max-height: 40px;
+    resize: none;
+    overflow: hidden;
+}
