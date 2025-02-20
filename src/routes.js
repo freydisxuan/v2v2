@@ -64,7 +64,11 @@ router.post('/form', async (req, res) => {
 
   const answers = [answer1, answer2, answer3, answer4];
 
-  validateInputs(question, answers);
+  const potentialErrors = validateInputs(question, answers);
+
+  if (potentialErrors) {
+    return res.status(500).render('error', { error: '500', message: potentialErrors })
+  }
 
   const env = environment(process.env, logger);
   if (!env) {
