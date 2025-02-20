@@ -2,20 +2,37 @@
 
 <form method="post" action="/form">
 
-  <label for="name">Heiti flokks:</label>
-  <input type="text" id="name" name="name">
-  <input type="number" id="name" name="number">
-  <label>rétt svar #1: <input type="radio" id="name" name="rett_svar" value="1"></label>
-  <label>rétt svar #2: <input type="radio" id="name" name="rett_svar" value="1"></label>
-  <label>rétt svar #3: <input type="radio" id="name" name="rett_svar" value="1"></label>
-
-  <input type="checkbox" id="name" name="checkbox">
-  <select>
-    <option>foo</option>
-    <option value="foobar">bar</option>
+  <label for="category">Hvaða flokkur?</label>
+  <select name="category" required>
+    <% categories.forEach((category) => { %>
+    <option value="<%= category.id %>"><%= category.name %></option>
+    <% }) %>
   </select>
-  <textarea name="text"></textarea>
-  <button type="submit">Búa til flokk</button>
+
+  <label for="question">Skrifaðu spurningu</label>
+  <textarea name="question" type="text"></textarea>
+
+
+  <label for="answer1">Svar 1</label>
+  <textarea name="answer1" type="text"></textarea>
+
+  <label for="answer2">Svar 2</label>
+  <textarea name="answer2" type="text"></textarea>
+
+  <label for="answer3">Svar 3</label>
+  <textarea name="answer3" type="text"></textarea>
+
+  <label for="answer4">Svar 4</label>
+  <textarea name="answer4" type="text"></textarea>
+
+  <label for="correct">Hvaða svar er rétt?</label>
+  <select name="correct" required>
+    <% for (let i = 0; i < 4; i++) { %>
+    <option value="<%= i+1 %>"><%= i+1 %></option>
+    <% } %>
+  </select>
+
+  <button type="submit">Búa til spurningu</button>
 </form>
 
 <%- include('footer') -%>

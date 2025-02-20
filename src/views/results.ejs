@@ -1,0 +1,19 @@
+<%- include('header') -%>
+
+<ul>
+<% data.forEach((question, question_index) => { %>
+    <li>
+        <pre><%= question.question %></pre>
+        <% if (question.correct) { %>
+            Correct!
+        <% } else { %>
+            Incorrect...
+        <% } %>
+        <p>You answered:</p>
+        <%= question.user_answer %>
+        <p>Correct answer:</p>
+        <%= question.answer %>
+    </li>
+<% }) %>
+</ul>
+<%- include('footer') -%>

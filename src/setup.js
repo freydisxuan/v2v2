@@ -2,6 +2,10 @@ import { readFile } from 'node:fs/promises';
 import { Database } from './lib/db.client.js';
 import { environment } from './lib/environment.js';
 import { logger as loggerSingleton } from './lib/logger.js';
+import process from 'node:process';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const SCHEMA_FILE = './sql/schema.sql';
 const DROP_SCHEMA_FILE = './sql/drop.sql';

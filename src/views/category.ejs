@@ -3,18 +3,21 @@
 <% if (questions.length === 0) { %>
     <h2>Engar spurningar í þessum flokk...</h2>
 <% } else { %>
-    <% locals.questions.forEach(question => { %>
+    <form method="post" action="/spurningar/<%= id %>">
+    <% locals.questions.forEach((question, question_index) => { %>
         <section>
-            <h2>Spurning: <%=question.title%></h2>
-            <% question.answers.forEach(answer => { %>
+            <h2>Spurning: <pre><%=question.question%></pre></h2>
+            <% question.answers.forEach((answer, answer_index) => { %>
                 <div>
-                    <strong><%=answer.answer%></strong>
-                    <button>False</button>
-                    <button>True</button>
+                    <label>
+                        <input name="<%= question_index %>" type="radio" value="<%= answer.answer %>"><%=answer.answer%>
+                    </label>
                 </div>
             <% }) %>            
         </section>
     <% }) %>
+    <button type="submit">Submit answers</button>
+    </form>
 <% } %>
 
 <%- include('footer') -%>

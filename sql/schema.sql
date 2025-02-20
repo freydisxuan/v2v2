@@ -1,19 +1,15 @@
 CREATE TABLE IF NOT EXISTS categories (
   id serial primary key,
-  name varchar(64) not null unique,
-  created timestamp with time zone not null default current_timestamp
+  name varchar(64) not null unique
 );
-
-CREATE TABLE IF NOT EXISTS question(
-  id serial primary key,
-  question_text text,
-  category_id int references categories(id),
-  created timestamp with time zone not null default current_timestamp
+CREATE TABLE IF NOT EXISTS questions (
+id serial primary key,
+question text not null,
+category_id int references categories(id) on delete cascade
 );
-
-CREATE TABLE IF NOT EXISTS answer(
-  id serial primary key,
-  question_id int references question(id),
-  answer_text text,
-  right_answer boolean
+CREATE TABLE IF NOT EXISTS answers (
+id serial primary key,
+answer text not null,
+is_correct boolean default false,
+question_id int references questions(id) on delete cascade
 );
