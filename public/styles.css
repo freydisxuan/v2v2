@@ -1,11 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Arial, sans-serif, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
     margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
+    padding: 20px;
     display: flex;
     justify-content: center;
-}
+  }
 
 .container {
     max-width: 600px;
@@ -18,9 +19,18 @@ body {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #333;
 }
+
+h1{
+    text-align: center;
+}
+/* h2 {
+    color: #222;
+    margin-bottom: 20px;
+    text-align: center;
+  } */
 
 pre {
     font-family: inherit;
@@ -43,8 +53,35 @@ label {
 input[type="radio"] {
     margin-right: 8px;
 }
+ul {
+    padding: 0px;
+    text-align: center;
+  }
 
-button {
+  li {
+    display: inline-block;
+    list-style: none;
+  }
+
+  a, button {
+    display: inline-block;
+    align-items: center;
+    margin: 5px 0;
+    padding: 5px 10px;     
+    background-color: black;
+    color: white;          
+    text-decoration: none;  
+    border-radius: 5px;  
+    font-size: 16px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;  
+  }
+  
+  a:hover, button:hover {
+    background-color: #333;
+    transform: scale(1.05); 
+  }
+/* button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -59,4 +96,4 @@ button {
 
 button:hover {
     background-color: #0056b3;
-}
+} */

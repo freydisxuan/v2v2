@@ -1,6 +1,6 @@
-insert into categories (name) values ('html');
-insert into categories (name) values ('css');
-insert into categories (name) values ('javascript');
+insert into categories (name) values ('HTML');
+insert into categories (name) values ('CSS');
+insert into categories (name) values ('JavaScript');
 
 INSERT INTO questions (question, category_id) VALUES ('Ef við værum að smíða vefsíðu og myndum vilja geta farið frá index.html yfir á about.html, hvað væri best að nota?', 1);
 INSERT INTO questions (question, category_id) VALUES ('Í <head> á vefjum setjum við <meta charset="utf-8"> (eða það stafasett sem nota á), afhverju er það gert?', 1);
