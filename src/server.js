@@ -19,6 +19,14 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', router);
 
+app.use((req, res) => {
+  res.status(404).render('error', { error: '404', message: 'Not found'});
+})
+
+app.use((err, req, res, next) => {
+  res.status(500).render('error').json({ error: '500', message: 'Someting didnt go quite right'})
+})
+
 const hostname = process.env.NODE_ENV === 'production' ? '0.0.0.0' : '127.0.0.1';
 const port = process.env.PORT || 3000;
 

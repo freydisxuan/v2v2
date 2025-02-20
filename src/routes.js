@@ -50,7 +50,7 @@ router.post('/spurningar/:category', async (req, res) => {
     data.push({ ...row, user_answer: user_answer, correct: correct });
   });
 
-  res.render('results', { data });
+  res.render('results', { data, title: "Results" });
 });
 
 router.get('/form', async (req, res) => {

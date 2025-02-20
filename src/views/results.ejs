@@ -1,13 +1,13 @@
 <%- include('header') -%>
-
+<div class="container">
 <ul>
 <% data.forEach((question, question_index) => { %>
     <li>
         <pre><%= question.question %></pre>
         <% if (question.correct) { %>
-            Correct!
+            <h2>Correct!</h2>
         <% } else { %>
-            Incorrect...
+            <h2>Incorrect...</h2>
         <% } %>
         <p>You answered:</p>
         <%= question.user_answer %>
@@ -16,4 +16,5 @@
     </li>
 <% }) %>
 </ul>
+</div>
 <%- include('footer') -%>
